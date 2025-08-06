@@ -27,8 +27,6 @@ public class MainMenu {
         frame.setTitle("A horse game about learning english");
         frame.pack();
         frame.setVisible(true);
-        //Ceci est un test
-        frame.setVisible(false);
     }
 
 }
