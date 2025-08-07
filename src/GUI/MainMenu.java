@@ -4,11 +4,13 @@ import com.sun.jdi.event.MethodExitEvent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MainMenu {
-    private void addStyleToButton(JButton button){
+    public static void addStyleToButton(JButton button){
         button.setBackground(new Color(70,130,180));
         button.setForeground(Color.white);
         button.setFocusPainted(false);
@@ -55,6 +57,13 @@ public class MainMenu {
         panel.add(character);
         panel.add(settings);
         panel.add(exit);
+        play.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                new Choose_GameMode();
+                frame.dispose();
+            }
+        });
         exit.addActionListener(e -> System.exit(0));
 
         // Obtenir la taille de l'écran en tant que dimension Java
