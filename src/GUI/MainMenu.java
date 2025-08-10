@@ -1,7 +1,5 @@
 package GUI;
 
-import com.sun.jdi.event.MethodExitEvent;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,11 +26,23 @@ public class MainMenu {
         });
     }
 
+    public static void centerApplication(JFrame frame){
+        // Obtenir la taille de l'écran en tant que dimension Java
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // Calculer l'emplacement de la fenêtre
+        int x = (screenSize.width - frame.getWidth()) / 4;
+        int y = (screenSize.height - frame.getHeight()) / 4;
+
+        // Définir l'emplacement de la fenêtre
+        frame.setLocation(x, y);
+    }
+
     public MainMenu() {
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
 
-        ImageIcon backgroundIcon = new ImageIcon(getClass().getResource("/Images/horse_bg.jpg"));
+        ImageIcon backgroundIcon = new ImageIcon(getClass().getResource("/Assets/horse_bg.jpg"));
         JLabel backgroundLabel = new JLabel(backgroundIcon);
         backgroundLabel.setLayout(new GridBagLayout());
         backgroundLabel.setSize(1280, 720);
@@ -66,15 +76,7 @@ public class MainMenu {
         });
         exit.addActionListener(e -> System.exit(0));
 
-        // Obtenir la taille de l'écran en tant que dimension Java
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        // Calculer l'emplacement de la fenêtre
-        int x = (screenSize.width - frame.getWidth()) / 4;
-        int y = (screenSize.height - frame.getHeight()) / 4;
-
-        // Définir l'emplacement de la fenêtre
-        frame.setLocation(x, y);
+        centerApplication(frame);
 
         frame.setMinimumSize(new Dimension(1280,720));
         frame.setMaximumSize(new Dimension(1280,720));
