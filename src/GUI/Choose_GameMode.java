@@ -1,7 +1,14 @@
 package GUI;
 
+import Controller.MemoController;
+import Logic.MemoLogic;
+import Logic.Pair;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Choose_GameMode {
     public Choose_GameMode() {
@@ -46,8 +53,21 @@ public class Choose_GameMode {
         panel.add(exitPanel, BorderLayout.SOUTH);
 
         memo.addActionListener(e -> {
-           new GameMode1();
-           frame.dispose();
+            List<Pair> pairList = Arrays.asList(
+                    new Pair("chat", "cat"),
+                    new Pair("chien", "dog"),
+                    new Pair("maison", "house"),
+                    new Pair("école", "school"),
+                    new Pair("livre", "book"),
+                    new Pair("stylo", "pen"),
+                    new Pair("pomme", "apple"),
+                    new Pair("eau", "water"),
+                    new Pair("soleil", "sun"),
+                    new Pair("lune", "moon")
+            );
+            System.out.println(pairList);
+            new MemoController(new MemoGUI(), new MemoLogic(), pairList);
+            frame.dispose();
         });
         exit.addActionListener(e -> {System.exit(0);});
 

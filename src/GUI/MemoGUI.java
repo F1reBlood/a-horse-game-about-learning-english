@@ -1,14 +1,21 @@
 package GUI;
 
+import Logic.Pair;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
-public class GameMode1 {
-    public GameMode1(){
-        JFrame frame = new JFrame("Memo");
-        JPanel panel = new JPanel();
+public class MemoGUI {
+    private JFrame frame;
+    private JPanel panel;
 
-        panel.setLayout(new GridLayout());
+    public MemoGUI(){
+        frame = new JFrame("Memo");
+        panel = new JPanel();
+
+        panel.setLayout(new GridLayout(4, 5, 10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         frame.add(panel);
         MainMenu.centerApplication(frame);
 
@@ -17,5 +24,14 @@ public class GameMode1 {
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+    }
+
+
+    public JFrame getFrame(){
+        return frame;
+    }
+    public JPanel getPanel(){
+        return panel;
     }
 }
