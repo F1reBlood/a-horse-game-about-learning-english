@@ -3,6 +3,7 @@ package Logic;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.List;
 
 public class MemoLogic {
@@ -27,5 +28,30 @@ public class MemoLogic {
 
         Collections.shuffle(result);
         return result;
+    }
+
+    public static void showAllButtons(Hashtable<String, JButton> buttons){
+        buttons.forEach((mot, button) ->{
+            button.setText(mot);
+        });
+    }
+
+    public static void hideAllButtons(Hashtable<String, JButton> buttons){
+        for (JButton button : buttons.values()){
+            button.setText("");
+        }
+    }
+
+
+    public static void showOneButton(Hashtable<String, JButton> buttons, JButton buttonToShow){
+        buttons.forEach((mot, button) ->{
+            if (button.equals(buttonToShow)){
+                button.setText(mot);
+            }
+        });
+    }
+
+    public static void hideOneButton(JButton buttonToHide){
+        buttonToHide.setText("");
     }
 }

@@ -11,6 +11,9 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 
+import static Logic.MemoLogic.hideAllButtons;
+import static Logic.MemoLogic.showOneButton;
+
 public class MemoController {
     private MemoGUI view;
     private MemoLogic model;
@@ -25,21 +28,26 @@ public class MemoController {
         List<String> mots = MemoLogic.listMots(pairList);
 
         // Crée un dictionnaire qui relie un mot au bouton portant ce mot
-        Dictionary<String, JButton> buttons = new Hashtable<>();
+        Hashtable<String, JButton> buttons = new Hashtable<>();
 
         // Crée les boutons et les associe chacun à un mot différent, leur ajoute un style, les ajoute au dictionnaire et les affiche
         for (int i = 0; i < mots.size(); i++) {
             JButton button = new JButton(mots.get(i));
             MainMenu.addStyleToButton(button);
             buttons.put(mots.get(i), button);
+            button.addActionListener(e -> {
+                showOneButton(buttons, button);
+            });
             this.view.getPanel().add(button);
         }
 
-        // Crée un timer de 10ms puis gèle l'écran afin que le joueur puisse regarder les cartes.
-        // Gèle l'écran après 10ms pour éviter que l'écran soit vide lorsqu'il est gelé
-        new Timer(10, e -> {
+        // Crée un timer de 50ms puis gèle l'écran afin que le joueur puisse regarder les cartes.
+        // Gèle l'écran après 50ms pour éviter que l'écran soit vide lorsqu'il est gelé
+        new Timer(50, e -> {
             try {
                 Thread.sleep(3000);
+                hideAllButtons(buttons);
+
             } catch (InterruptedException ex) {
                 throw new RuntimeException(ex);
             }
