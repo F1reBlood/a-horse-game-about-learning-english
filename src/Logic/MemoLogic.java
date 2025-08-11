@@ -1,16 +1,13 @@
 package Logic;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 public class MemoLogic {
     // Compare les 2 cartes, si l'une est la traduction de l'autre, alors isPaired = true
-    public static boolean isPaired(String trad1, String trad2, Pair[] pairList){
-        for (int i = 0; i < pairList.length; i++){
-            if ((pairList[i].tradFr == trad1 && pairList[i].tradEn == trad2) || (pairList[i].tradFr == trad2 && pairList[i].tradEn == trad1)){
+    public static boolean isPaired(String trad1, String trad2, List<Pair> pairList){
+        for (int i = 0; i < pairList.size(); i++){
+            if ((pairList.get(i).tradFr == trad1 && pairList.get(i).tradEn == trad2) || (pairList.get(i).tradFr == trad2 && pairList.get(i).tradEn == trad1)){
                 return true;
             }
         }
@@ -28,6 +25,15 @@ public class MemoLogic {
 
         Collections.shuffle(result);
         return result;
+    }
+
+    public static boolean isEveryPairsFound(Hashtable<String, JButton> buttons){
+        for (JButton button : buttons.values()){
+            if (button.getText().isEmpty()){
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void showAllButtons(Hashtable<String, JButton> buttons){

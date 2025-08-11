@@ -30,13 +30,13 @@ public class Choose_GameMode {
         JButton GameMode2 = new JButton("test");
         JButton GameMode3 = new JButton("test");
         JButton GameMode4 = new JButton("test");
-        JButton exit = new JButton("Exit");
+        JButton back = new JButton("Back");
 
         MainMenu.addStyleToButton(memo);
         MainMenu.addStyleToButton(GameMode2);
         MainMenu.addStyleToButton(GameMode3);
         MainMenu.addStyleToButton(GameMode4);
-        MainMenu.addStyleToButton(exit);
+        MainMenu.addStyleToButton(back);
 
         JPanel buttonsPanel = new JPanel(new GridLayout(2,2, 30, 30));
         buttonsPanel.setOpaque(false);
@@ -47,7 +47,7 @@ public class Choose_GameMode {
 
         JPanel exitPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         exitPanel.setOpaque(false);
-        exitPanel.add(exit);
+        exitPanel.add(back);
 
         panel.add(buttonsPanel, BorderLayout.CENTER);
         panel.add(exitPanel, BorderLayout.SOUTH);
@@ -68,7 +68,10 @@ public class Choose_GameMode {
             new MemoController(new MemoGUI(), new MemoLogic(), pairList);
             frame.dispose();
         });
-        exit.addActionListener(e -> {System.exit(0);});
+        back.addActionListener(e -> {
+            new MainMenu();
+            frame.dispose();
+        });
 
         MainMenu.centerApplication(frame);
 

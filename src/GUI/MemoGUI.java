@@ -1,5 +1,7 @@
 package GUI;
 
+import Controller.MemoController;
+import Logic.MemoLogic;
 import Logic.Pair;
 
 import javax.swing.*;
@@ -22,11 +24,39 @@ public class MemoGUI {
         frame.setMinimumSize(new Dimension(1280,720));
         frame.setMaximumSize(new Dimension(1280,720));
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-        frame.pack();
         frame.setVisible(true);
 
     }
 
+    public void endMemo(List<Pair> pairList){
+        panel.removeAll();
+
+        JLabel label = new JLabel("Bravo, tu as gagné !", SwingConstants.CENTER);
+        label.setLayout(new GridLayout(3, 1, 50, 50));
+        panel.add(label);
+        label.setFont(new Font("Serif", Font.BOLD, 34));
+        label.setBackground(new Color(70,130,180));
+        label.setForeground(Color.white);
+        label.setOpaque(true);
+
+        JButton replay = new JButton("Replay");
+        MainMenu.addStyleToButton(replay);
+        panel.add(replay);
+        replay.addActionListener(e -> {
+           new MemoController(new MemoGUI(), new MemoLogic(), pairList);
+           frame.dispose();
+        });
+
+        JButton back = new JButton("Back");
+        MainMenu.addStyleToButton(back);
+        back.addActionListener(e -> {
+            new Choose_GameMode();
+            frame.dispose();
+        });
+        panel.add(back);
+        panel.repaint();
+
+    }
 
     public JFrame getFrame(){
         return frame;

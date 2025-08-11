@@ -11,8 +11,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 
-import static Logic.MemoLogic.hideAllButtons;
-import static Logic.MemoLogic.showOneButton;
+import static Logic.MemoLogic.*;
 
 public class MemoController {
     private MemoGUI view;
@@ -37,6 +36,28 @@ public class MemoController {
             buttons.put(mots.get(i), button);
             button.addActionListener(e -> {
                 showOneButton(buttons, button);
+                buttons.forEach((mot, buttonBoucle) -> {
+                    if (isEveryPairsFound(buttons)){
+                        this.view.endMemo(this.pairList);
+                    }
+                    if (isPaired(button.getText(), buttonBoucle.getText(), this.pairList)){
+                        this.view.endMemo(this.pairList);
+                    }
+                    else if (!(buttonBoucle.getText().isEmpty()) && !(buttonBoucle.equals(button)) && buttonBoucle.isEnabled()){
+                        new Timer(50, e2 -> {
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                            hideOneButton(button);
+                            hideOneButton(buttonBoucle);
+                        }) {{
+                            setRepeats(false);
+                            start();
+                        }};
+                    }
+                });
             });
             this.view.getPanel().add(button);
         }
@@ -45,7 +66,9 @@ public class MemoController {
         // Gèle l'écran après 50ms pour éviter que l'écran soit vide lorsqu'il est gelé
         new Timer(50, e -> {
             try {
+                // Laisse l'utilisateur voir les cartes pendant 3 secondes
                 Thread.sleep(3000);
+                // Cache toutes les cartes
                 hideAllButtons(buttons);
 
             } catch (InterruptedException ex) {
