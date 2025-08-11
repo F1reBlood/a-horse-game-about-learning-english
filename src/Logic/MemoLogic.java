@@ -27,6 +27,7 @@ public class MemoLogic {
         return result;
     }
 
+    // Si toutes les paires ont été trouvées, retourne true, sinon retourne false
     public static boolean isEveryPairsFound(Hashtable<String, JButton> buttons){
         for (JButton button : buttons.values()){
             if (button.getText().isEmpty()){
@@ -36,19 +37,21 @@ public class MemoLogic {
         return true;
     }
 
+    // Affiche le mot (key) du dictionnaire buttons sur le bouton associé (fait ça pour tous les boutons du dictionnaire)
     public static void showAllButtons(Hashtable<String, JButton> buttons){
         buttons.forEach((mot, button) ->{
             button.setText(mot);
         });
     }
 
+    // Supprime le texte (cache) sur tous les boutons du dictionnaire buttons (fait ça pour tous les boutons du dictionnaire)
     public static void hideAllButtons(Hashtable<String, JButton> buttons){
         for (JButton button : buttons.values()){
             button.setText("");
         }
     }
 
-
+    // Affiche le mot (key) du dictionnaire buttons sur le bouton associé (fait ça seulement pour le buttonToShow)
     public static void showOneButton(Hashtable<String, JButton> buttons, JButton buttonToShow){
         buttons.forEach((mot, button) ->{
             if (button.equals(buttonToShow)){
@@ -57,6 +60,7 @@ public class MemoLogic {
         });
     }
 
+    // Supprime le texte (cache) sur tous les boutons du dictionnaire buttons (fait ça uniquement pour le buttonToHide)
     public static void hideOneButton(JButton buttonToHide){
         buttonToHide.setText("");
     }

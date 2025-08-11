@@ -37,12 +37,16 @@ public class MemoController {
             button.addActionListener(e -> {
                 showOneButton(buttons, button);
                 buttons.forEach((mot, buttonBoucle) -> {
+                    // On parcourt tous les boutons, si toutes les paires ont été trouvées, le jeu est fini et on affiche l'écran de fin.
                     if (isEveryPairsFound(buttons)){
                         this.view.endMemo(this.pairList);
                     }
+                    // Si une paire a été trouvée, on grise les boutons
                     if (isPaired(button.getText(), buttonBoucle.getText(), this.pairList)){
-                        this.view.endMemo(this.pairList);
+                        button.setEnabled(false);
+                        buttonBoucle.setEnabled(false);
                     }
+                    // Si on clique sur 2 boutons sans trouver de paire, on retourne les boutons face caché après 1/2 seconde
                     else if (!(buttonBoucle.getText().isEmpty()) && !(buttonBoucle.equals(button)) && buttonBoucle.isEnabled()){
                         new Timer(50, e2 -> {
                             try {
