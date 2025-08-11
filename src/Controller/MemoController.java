@@ -6,6 +6,7 @@ import Logic.MemoLogic;
 import Logic.Pair;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
@@ -30,5 +31,16 @@ public class MemoController {
             buttons.put(mots.get(i), button);
             this.view.getPanel().add(button);
         }
+
+        new Timer(10, e -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+        }) {{
+            setRepeats(false); // Ne se lance qu'une seule fois
+            start();
+        }};
     }
 }
