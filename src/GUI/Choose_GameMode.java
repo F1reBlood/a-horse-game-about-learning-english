@@ -65,7 +65,6 @@ public class Choose_GameMode {
                     new Pair("soleil", "sun"),
                     new Pair("lune", "moon")
             );
-            System.out.println(pairList);
             new MemoController(new MemoGUI(), new MemoLogic(), pairList);
             frame.dispose();
         });
