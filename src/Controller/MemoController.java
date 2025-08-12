@@ -39,7 +39,7 @@ public class MemoController {
                 buttons.forEach((mot, buttonBoucle) -> {
                     // On parcourt tous les boutons, si toutes les paires ont été trouvées, le jeu est fini et on affiche l'écran de fin.
                     if (isEveryPairsFound(buttons)){
-                        this.view.endMemo(this.pairList);
+                        this.view.endMemo(this.pairList, this.model.getScore());
                     }
                     // Si une paire a été trouvée, on grise les boutons
                     if (isPaired(button.getText(), buttonBoucle.getText(), this.pairList)){
@@ -56,6 +56,7 @@ public class MemoController {
                             }
                             hideOneButton(button);
                             hideOneButton(buttonBoucle);
+                            this.model.removeScore(5);
                         }) {{
                             setRepeats(false);
                             start();

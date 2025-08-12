@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.util.*;
 
 public class MemoLogic {
+    private int score = 100;
+
     // Compare les 2 cartes, si l'une est la traduction de l'autre, alors isPaired = true
     public static boolean isPaired(String trad1, String trad2, List<Pair> pairList){
         for (int i = 0; i < pairList.size(); i++){
@@ -63,5 +65,17 @@ public class MemoLogic {
     // Supprime le texte (cache) sur tous les boutons du dictionnaire buttons (fait ça uniquement pour le buttonToHide)
     public static void hideOneButton(JButton buttonToHide){
         buttonToHide.setText("");
+    }
+
+    public void removeScore(int nbToRemove){
+        score -= nbToRemove;
+    }
+
+    public int getScore(){
+        return score;
+    }
+
+    public void setScore(int score){
+        this.score = score;
     }
 }

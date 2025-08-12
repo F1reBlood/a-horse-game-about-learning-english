@@ -28,10 +28,16 @@ public class MemoGUI {
 
     }
 
-    public void endMemo(List<Pair> pairList){
+    public void endMemo(List<Pair> pairList, int score){
         panel.removeAll();
+        JLabel label;
 
-        JLabel label = new JLabel("Bravo, tu as gagné !", SwingConstants.CENTER);
+        if (score>0){
+            label = new JLabel("Bravo, tu as gagné ! Ton score est de : " + score, SwingConstants.CENTER);
+        }
+        else{
+            label = new JLabel("Dommage, tu as perdu ! Ton score est de : " + score, SwingConstants.CENTER);
+        }
         label.setLayout(new GridLayout(3, 1, 50, 50));
         panel.add(label);
         label.setFont(new Font("Serif", Font.BOLD, 34));
