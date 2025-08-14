@@ -26,6 +26,20 @@ public class MainMenu {
         });
     }
 
+    public static void addStyleToLabel(JLabel label, int size){
+        label.setFont(new Font("Serif", Font.BOLD, size));
+        label.setBackground(new Color(70,130,180));
+        label.setForeground(Color.white);
+        label.setOpaque(true);
+    }
+
+    public static void addStyleToTextField(JTextField textField, int size){
+        textField.setHorizontalAlignment(JTextField.CENTER);
+        textField.setBackground(new Color(70,130,180));
+        textField.setForeground(Color.white);
+        textField.setFont(new Font("Serif", Font.BOLD, size));
+    }
+
     public static void centerApplication(JFrame frame){
         // Obtenir la taille de l'écran en tant que dimension Java
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
