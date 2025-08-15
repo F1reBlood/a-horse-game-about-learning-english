@@ -2,12 +2,14 @@ package Controller;
 
 import GUI.MainMenu;
 import GUI.MemoGUI;
+import GUI.StyleController;
 import Logic.CoreLogic;
 import Logic.MemoLogic;
 import Logic.ScoreManager;
 import Logic.Pair;
 
 import javax.swing.*;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -17,10 +19,22 @@ public class MemoController {
     private ScoreManager scoreLogic;
     private List<Pair> pairList;
 
-    public MemoController(MemoGUI view, MemoLogic model, List<Pair> pairList){
+    public MemoController(MemoGUI view, MemoLogic model){
         this.view = view;
         this.model = model;
-        this.pairList = pairList;
+
+        pairList = Arrays.asList(
+                new Pair("chat", "cat"),
+                new Pair("chien", "dog"),
+                new Pair("maison", "house"),
+                new Pair("école", "school"),
+                new Pair("livre", "book"),
+                new Pair("stylo", "pen"),
+                new Pair("pomme", "apple"),
+                new Pair("eau", "water"),
+                new Pair("soleil", "sun"),
+                new Pair("lune", "moon")
+        );
 
         scoreLogic = new ScoreManager();
         scoreLogic.setScore(100);
@@ -34,7 +48,7 @@ public class MemoController {
         // Crée les boutons et les associe chacun à un mot différent, leur ajoute un style, les ajoute au dictionnaire et les affiche
         for (int i = 0; i < mots.size(); i++) {
             JButton button = new JButton(mots.get(i));
-            MainMenu.addStyleToButton(button);
+            StyleController.addStyleToButton(button);
             buttons.put(mots.get(i), button);
             button.addActionListener(e -> {
                 showOneButton(buttons, button);

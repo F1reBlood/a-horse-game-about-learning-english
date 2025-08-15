@@ -19,7 +19,7 @@ public class MemoGUI {
         panel.setLayout(new GridLayout(4, 5, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         frame.add(panel);
-        MainMenu.centerApplication(frame);
+        StyleController.centerApplication(frame);
 
         frame.setMinimumSize(new Dimension(1280,720));
         frame.setMaximumSize(new Dimension(1280,720));
@@ -40,21 +40,18 @@ public class MemoGUI {
         }
         label.setLayout(new GridLayout(3, 1, 50, 50));
         panel.add(label);
-        label.setFont(new Font("Serif", Font.BOLD, 34));
-        label.setBackground(new Color(70,130,180));
-        label.setForeground(Color.white);
-        label.setOpaque(true);
+        StyleController.addStyleToLabel(label, 34);
 
         JButton replay = new JButton("Replay");
-        MainMenu.addStyleToButton(replay);
+        StyleController.addStyleToButton(replay);
         panel.add(replay);
         replay.addActionListener(e -> {
-           new MemoController(new MemoGUI(), new MemoLogic(), pairList);
+           new MemoController(new MemoGUI(), new MemoLogic());
            frame.dispose();
         });
 
         JButton back = new JButton("Back");
-        MainMenu.addStyleToButton(back);
+        StyleController.addStyleToButton(back);
         back.addActionListener(e -> {
             new Choose_GameMode();
             frame.dispose();

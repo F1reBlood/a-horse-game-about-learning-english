@@ -4,12 +4,9 @@ import Controller.FrenchToEnglishController;
 import Controller.MemoController;
 import Logic.FrenchToEnglishLogic;
 import Logic.MemoLogic;
-import Logic.Pair;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
-import java.util.List;
 
 public class Choose_GameMode {
     public Choose_GameMode() {
@@ -33,11 +30,11 @@ public class Choose_GameMode {
         JButton GameMode4 = new JButton("test");
         JButton back = new JButton("Back");
 
-        MainMenu.addStyleToButton(memo);
-        MainMenu.addStyleToButton(frenchToEnglish);
-        MainMenu.addStyleToButton(GameMode3);
-        MainMenu.addStyleToButton(GameMode4);
-        MainMenu.addStyleToButton(back);
+        StyleController.addStyleToButton(memo);
+        StyleController.addStyleToButton(frenchToEnglish);
+        StyleController.addStyleToButton(GameMode3);
+        StyleController.addStyleToButton(GameMode4);
+        StyleController.addStyleToButton(back);
 
         JPanel buttonsPanel = new JPanel(new GridLayout(2,2, 30, 30));
         buttonsPanel.setOpaque(false);
@@ -54,19 +51,7 @@ public class Choose_GameMode {
         panel.add(exitPanel, BorderLayout.SOUTH);
 
         memo.addActionListener(e -> {
-            List<Pair> pairList = Arrays.asList(
-                    new Pair("chat", "cat"),
-                    new Pair("chien", "dog"),
-                    new Pair("maison", "house"),
-                    new Pair("école", "school"),
-                    new Pair("livre", "book"),
-                    new Pair("stylo", "pen"),
-                    new Pair("pomme", "apple"),
-                    new Pair("eau", "water"),
-                    new Pair("soleil", "sun"),
-                    new Pair("lune", "moon")
-            );
-            new MemoController(new MemoGUI(), new MemoLogic(), pairList);
+            new MemoController(new MemoGUI(), new MemoLogic());
             frame.dispose();
         });
         back.addActionListener(e -> {
@@ -78,7 +63,7 @@ public class Choose_GameMode {
             frame.dispose();
         });
 
-        MainMenu.centerApplication(frame);
+        StyleController.centerApplication(frame);
 
         frame.setMinimumSize(new Dimension(1280,720));
         frame.setMaximumSize(new Dimension(1280,720));
