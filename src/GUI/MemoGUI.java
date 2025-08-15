@@ -1,7 +1,7 @@
 package GUI;
 
 import Controller.MemoController;
-import Logic.MemoLogic;
+import Logic.GameLogic;
 import Logic.Pair;
 
 import javax.swing.*;
@@ -49,7 +49,7 @@ public class MemoGUI {
         MainMenu.addStyleToButton(replay);
         panel.add(replay);
         replay.addActionListener(e -> {
-           new MemoController(new MemoGUI(), new MemoLogic(), pairList);
+           new MemoController(new MemoGUI(), new GameLogic(), pairList);
            frame.dispose();
         });
 

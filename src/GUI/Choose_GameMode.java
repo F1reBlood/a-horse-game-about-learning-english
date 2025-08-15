@@ -2,13 +2,11 @@ package GUI;
 
 import Controller.FrenchToEnglishController;
 import Controller.MemoController;
-import Logic.FrenchToEnglishLogic;
-import Logic.MemoLogic;
+import Logic.GameLogic;
 import Logic.Pair;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -67,7 +65,7 @@ public class Choose_GameMode {
                     new Pair("soleil", "sun"),
                     new Pair("lune", "moon")
             );
-            new MemoController(new MemoGUI(), new MemoLogic(), pairList);
+            new MemoController(new MemoGUI(), new GameLogic(), pairList);
             frame.dispose();
         });
         back.addActionListener(e -> {
@@ -75,7 +73,7 @@ public class Choose_GameMode {
             frame.dispose();
         });
         frenchToEnglish.addActionListener(e -> {
-            new FrenchToEnglishController(new FrenchToEnglishGUI(), new FrenchToEnglishLogic());
+            new FrenchToEnglishController(new FrenchToEnglishGUI(), new GameLogic());
             frame.dispose();
         });
 

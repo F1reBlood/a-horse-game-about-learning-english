@@ -5,6 +5,10 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 public class FrenchToEnglishGUI {
+    private JButton submit;
+    private JLabel textToTranslate;
+    private JTextField userText;
+
     public FrenchToEnglishGUI() {
         JFrame frame = new JFrame("French to English");
         JPanel panel = new JPanel();
@@ -20,18 +24,28 @@ public class FrenchToEnglishGUI {
         panel.setLayout(new GridLayout(3, 1, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        JLabel textToTranslate = new JLabel("This is a test sentence, and it's cool !");
+        textToTranslate = new JLabel("This is a test sentence, and it's cool !");
         textToTranslate.setHorizontalAlignment(JLabel.CENTER);
         MainMenu.addStyleToLabel(textToTranslate, 34);
 
-        JTextField userText = new JTextField();
+        userText = new JTextField();
         MainMenu.addStyleToTextField(userText, 24);
 
-        JButton submit = new JButton("Submit");
+        submit = new JButton("Submit");
         MainMenu.addStyleToButton(submit);
 
         panel.add(textToTranslate);
         panel.add(userText);
         panel.add(submit);
+    }
+
+    public JButton getSubmitButton(){
+        return submit;
+    }
+    public JLabel getTextToTranslateLabel(){
+        return textToTranslate;
+    }
+    public JTextField getUserTextField(){
+        return userText;
     }
 }

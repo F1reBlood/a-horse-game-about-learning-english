@@ -2,29 +2,27 @@ package Controller;
 
 import GUI.MainMenu;
 import GUI.MemoGUI;
-import Logic.MemoLogic;
+import Logic.GameLogic;
 import Logic.Pair;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 
-import static Logic.MemoLogic.*;
+import static Logic.GameLogic.*;
 
 public class MemoController {
     private MemoGUI view;
-    private MemoLogic model;
+    private GameLogic model;
     private List<Pair> pairList;
 
-    public MemoController(MemoGUI view, MemoLogic model, List<Pair> pairList){
+    public MemoController(MemoGUI view, GameLogic model, List<Pair> pairList){
         this.view = view;
         this.model = model;
         this.pairList = pairList;
 
         // Sépare les mots des paires afin de faire une liste mélangée de mots
-        List<String> mots = MemoLogic.listMots(pairList);
+        List<String> mots = GameLogic.listMots(pairList);
 
         // Crée un dictionnaire qui relie un mot au bouton portant ce mot
         Hashtable<String, JButton> buttons = new Hashtable<>();
