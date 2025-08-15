@@ -2,7 +2,8 @@ package GUI;
 
 import Controller.FrenchToEnglishController;
 import Controller.MemoController;
-import Logic.GameLogic;
+import Logic.FrenchToEnglishLogic;
+import Logic.MemoLogic;
 import Logic.Pair;
 
 import javax.swing.*;
@@ -65,7 +66,7 @@ public class Choose_GameMode {
                     new Pair("soleil", "sun"),
                     new Pair("lune", "moon")
             );
-            new MemoController(new MemoGUI(), new GameLogic(), pairList);
+            new MemoController(new MemoGUI(), new MemoLogic(), pairList);
             frame.dispose();
         });
         back.addActionListener(e -> {
@@ -73,7 +74,7 @@ public class Choose_GameMode {
             frame.dispose();
         });
         frenchToEnglish.addActionListener(e -> {
-            new FrenchToEnglishController(new FrenchToEnglishGUI(), new GameLogic());
+            new FrenchToEnglishController(new FrenchToEnglishGUI(), new FrenchToEnglishLogic());
             frame.dispose();
         });
 

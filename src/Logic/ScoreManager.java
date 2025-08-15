@@ -1,10 +1,14 @@
 package Logic;
 
-public class MemoScore {
-    private int score = 100;
+public class ScoreManager {
+    private int score = 0;
 
     public void removeScore(int nbToRemove){
         score -= nbToRemove;
+    }
+
+    public void addScore(int nbToAdd){
+        score += nbToAdd;
     }
 
     public int getScore(){

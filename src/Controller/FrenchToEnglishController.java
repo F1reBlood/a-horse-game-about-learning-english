@@ -1,7 +1,8 @@
 package Controller;
 
 import GUI.FrenchToEnglishGUI;
-import Logic.GameLogic;
+import Logic.CoreLogic;
+import Logic.FrenchToEnglishLogic;
 import Logic.Pair;
 
 import javax.swing.*;
@@ -11,10 +12,10 @@ import java.util.Arrays;
 
 public class FrenchToEnglishController {
     private FrenchToEnglishGUI view;
-    private GameLogic model;
+    private FrenchToEnglishLogic model;
     private int cpt;
 
-    public FrenchToEnglishController(FrenchToEnglishGUI view, GameLogic model){
+    public FrenchToEnglishController(FrenchToEnglishGUI view, FrenchToEnglishLogic model){
         this.view = view;
         this.model = model;
 
@@ -32,11 +33,11 @@ public class FrenchToEnglishController {
                 new Pair("La lune est blanche ce soir.", "The moon is white tonight.")
         );
 
-        List<String> shuffuledPhrases = GameLogic.shuffleFrenchPairs(listPhrases);
+        List<String> shuffuledPhrases = this.model.shuffleFrenchPairs(listPhrases);
 
         this.view.getTextToTranslateLabel().setText(shuffuledPhrases.get(cpt));
         this.view.getSubmitButton().addActionListener(e -> {
-            if (GameLogic.isPaired(this.view.getTextToTranslateLabel().getText(), this.view.getUserTextField().getText(), listPhrases)){
+            if (CoreLogic.isPaired(this.view.getTextToTranslateLabel().getText(), this.view.getUserTextField().getText(), listPhrases)){
                 this.view.getTextToTranslateLabel().setForeground(Color.GREEN);
                 new Timer(50, e1 -> {
                     try {

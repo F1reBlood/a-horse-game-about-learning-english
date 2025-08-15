@@ -2,27 +2,31 @@ package Controller;
 
 import GUI.MainMenu;
 import GUI.MemoGUI;
-import Logic.GameLogic;
+import Logic.CoreLogic;
+import Logic.MemoLogic;
+import Logic.ScoreManager;
 import Logic.Pair;
 
 import javax.swing.*;
 import java.util.Hashtable;
 import java.util.List;
 
-import static Logic.GameLogic.*;
-
 public class MemoController {
     private MemoGUI view;
-    private GameLogic model;
+    private MemoLogic model;
+    private ScoreManager scoreLogic;
     private List<Pair> pairList;
 
-    public MemoController(MemoGUI view, GameLogic model, List<Pair> pairList){
+    public MemoController(MemoGUI view, MemoLogic model, List<Pair> pairList){
         this.view = view;
         this.model = model;
         this.pairList = pairList;
 
+        scoreLogic = new ScoreManager();
+        scoreLogic.setScore(100);
+
         // Sépare les mots des paires afin de faire une liste mélangée de mots
-        List<String> mots = GameLogic.listMots(pairList);
+        List<String> mots = this.model.listMots(pairList);
 
         // Crée un dictionnaire qui relie un mot au bouton portant ce mot
         Hashtable<String, JButton> buttons = new Hashtable<>();
@@ -36,11 +40,11 @@ public class MemoController {
                 showOneButton(buttons, button);
                 buttons.forEach((mot, buttonBoucle) -> {
                     // On parcourt tous les boutons, si toutes les paires ont été trouvées, le jeu est fini et on affiche l'écran de fin.
-                    if (isEveryPairsFound(buttons)){
-                        this.view.endMemo(this.pairList, this.model.getScore());
+                    if (this.model.isEveryPairsFound(buttons)){
+                        this.view.endMemo(this.pairList, scoreLogic.getScore());
                     }
                     // Si une paire a été trouvée, on grise les boutons
-                    if (isPaired(button.getText(), buttonBoucle.getText(), this.pairList)){
+                    if (CoreLogic.isPaired(button.getText(), buttonBoucle.getText(), this.pairList)){
                         button.setEnabled(false);
                         buttonBoucle.setEnabled(false);
                     }
@@ -54,7 +58,7 @@ public class MemoController {
                             }
                             hideOneButton(button);
                             hideOneButton(buttonBoucle);
-                            this.model.removeScore(5);
+                            scoreLogic.removeScore(5);
                         }) {{
                             setRepeats(false);
                             start();
@@ -82,5 +86,33 @@ public class MemoController {
             setRepeats(false);
             start();
         }};
+    }
+
+    // Affiche le mot (key) du dictionnaire buttons sur le bouton associé (fait ça pour tous les boutons du dictionnaire)
+    private void showAllButtons(Hashtable<String, JButton> buttons){
+        buttons.forEach((mot, button) ->{
+            button.setText(mot);
+        });
+    }
+
+    // Supprime le texte sur tous les boutons du dictionnaire buttons (fait ça pour tous les boutons du dictionnaire)
+    private void hideAllButtons(Hashtable<String, JButton> buttons){
+        for (JButton button : buttons.values()){
+            button.setText("");
+        }
+    }
+
+    // Affiche le mot (key) du dictionnaire buttons sur le bouton associé (fait ça seulement pour le buttonToShow)
+    private void showOneButton(Hashtable<String, JButton> buttons, JButton buttonToShow){
+        buttons.forEach((mot, button) ->{
+            if (button.equals(buttonToShow)){
+                button.setText(mot);
+            }
+        });
+    }
+
+    // Supprime le texte sur un bouton
+    private void hideOneButton(JButton buttonToHide){
+        buttonToHide.setText("");
     }
 }
