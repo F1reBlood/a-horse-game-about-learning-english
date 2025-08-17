@@ -1,7 +1,9 @@
 package GUI;
 
+import Controller.EnglishToFrenchController;
 import Controller.FrenchToEnglishController;
 import Controller.MemoController;
+import Logic.EnglishToFrenchLogic;
 import Logic.FrenchToEnglishLogic;
 import Logic.MemoLogic;
 
@@ -26,13 +28,13 @@ public class Choose_GameMode {
 
         JButton memo = new JButton("Memo");
         JButton frenchToEnglish = new JButton("French To English");
-        JButton GameMode3 = new JButton("test");
+        JButton englishToFrench = new JButton("English To French");
         JButton GameMode4 = new JButton("test");
         JButton back = new JButton("Back");
 
         StyleController.addStyleToButton(memo);
         StyleController.addStyleToButton(frenchToEnglish);
-        StyleController.addStyleToButton(GameMode3);
+        StyleController.addStyleToButton(englishToFrench);
         StyleController.addStyleToButton(GameMode4);
         StyleController.addStyleToButton(back);
 
@@ -40,7 +42,7 @@ public class Choose_GameMode {
         buttonsPanel.setOpaque(false);
         buttonsPanel.add(memo);
         buttonsPanel.add(frenchToEnglish);
-        buttonsPanel.add(GameMode3);
+        buttonsPanel.add(englishToFrench);
         buttonsPanel.add(GameMode4);
 
         JPanel exitPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -62,6 +64,11 @@ public class Choose_GameMode {
             new FrenchToEnglishController(new FrenchToEnglishGUI(), new FrenchToEnglishLogic());
             frame.dispose();
         });
+        englishToFrench.addActionListener(e -> {
+            new EnglishToFrenchController(new EnglishToFrenchGUI(), new EnglishToFrenchLogic());
+            frame.dispose();
+        });
+
 
         StyleController.centerApplication(frame);
 

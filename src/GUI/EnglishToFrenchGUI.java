@@ -1,20 +1,22 @@
 package GUI;
 
+import Controller.EnglishToFrenchController;
 import Controller.FrenchToEnglishController;
+import Logic.EnglishToFrenchLogic;
 import Logic.FrenchToEnglishLogic;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class FrenchToEnglishGUI {
+public class EnglishToFrenchGUI {
     private JButton submit;
     private JLabel textToTranslate;
     private JTextField userText;
     private JFrame frame;
     private JPanel panel;
 
-    public FrenchToEnglishGUI() {
-        frame = new JFrame("French to English");
+    public EnglishToFrenchGUI() {
+        frame = new JFrame("English to French");
         panel = new JPanel();
 
         frame.add(panel);
@@ -28,7 +30,7 @@ public class FrenchToEnglishGUI {
         panel.setLayout(new GridLayout(3, 1, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        textToTranslate = new JLabel("This is a test sentence, and it's cool !");
+        textToTranslate = new JLabel("C'est une phrase de test, et c'est cool !");
         textToTranslate.setHorizontalAlignment(JLabel.CENTER);
         StyleController.addStyleToLabel(textToTranslate, 34);
 
@@ -53,7 +55,7 @@ public class FrenchToEnglishGUI {
         return userText;
     }
 
-    public void endFrenchToEnglish(int score, int nbTours){
+    public void endEnglishToFrench(int score, int nbTours){
         panel.removeAll();
         JLabel label;
 
@@ -71,7 +73,7 @@ public class FrenchToEnglishGUI {
         StyleController.addStyleToButton(replay);
         panel.add(replay);
         replay.addActionListener(e -> {
-            new FrenchToEnglishController(new FrenchToEnglishGUI(), new FrenchToEnglishLogic());
+            new EnglishToFrenchController(new EnglishToFrenchGUI(), new EnglishToFrenchLogic());
             frame.dispose();
         });
 

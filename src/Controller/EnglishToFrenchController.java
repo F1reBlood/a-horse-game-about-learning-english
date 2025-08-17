@@ -1,25 +1,26 @@
 package Controller;
 
-import GUI.FrenchToEnglishGUI;
+import GUI.EnglishToFrenchGUI;
 import Logic.CoreLogic;
-import Logic.FrenchToEnglishLogic;
+import Logic.EnglishToFrenchLogic;
 import Logic.Pair;
 import Logic.ScoreManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
-public class FrenchToEnglishController {
-    private FrenchToEnglishGUI view;
-    private FrenchToEnglishLogic model;
-    private int cpt;
-    private int nbTours;
+public class EnglishToFrenchController {
+    private EnglishToFrenchLogic model;
+    private EnglishToFrenchGUI view;
     private ScoreManager scoreManager;
+
+    private int nbTours;
+    private int cpt;
     private boolean wrong;
 
-    public FrenchToEnglishController(FrenchToEnglishGUI view, FrenchToEnglishLogic model){
+    public EnglishToFrenchController(EnglishToFrenchGUI view, EnglishToFrenchLogic model) {
         this.view = view;
         this.model = model;
 
@@ -41,12 +42,12 @@ public class FrenchToEnglishController {
                 new Pair("La lune est blanche ce soir.", "The moon is white tonight.")
         );
 
-        List<String> shuffuledPhrases = this.model.shuffleFrenchPairs(listPhrases);
+        List<String> shuffuledPhrases = this.model.shuffleEnglishPairs(listPhrases);
 
         this.view.getTextToTranslateLabel().setText(shuffuledPhrases.get(cpt));
         this.view.getSubmitButton().addActionListener(e -> {
             if (cpt >= nbTours){
-                this.view.endFrenchToEnglish(scoreManager.getScore(), nbTours);
+                this.view.endEnglishToFrench(scoreManager.getScore(), nbTours);
             }
             else{
                 if (CoreLogic.isPaired(this.view.getTextToTranslateLabel().getText(), this.view.getUserTextField().getText(), listPhrases)){

@@ -35,12 +35,9 @@ public class MainMenu {
         panel.add(character);
         panel.add(settings);
         panel.add(exit);
-        play.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){
-                new Choose_GameMode();
-                frame.dispose();
-            }
+        play.addActionListener(e -> {
+            new Choose_GameMode();
+            frame.dispose();
         });
         exit.addActionListener(e -> System.exit(0));
 
