@@ -1,9 +1,7 @@
 package GUI;
 
 import Controller.EnglishToFrenchController;
-import Controller.FrenchToEnglishController;
 import Logic.EnglishToFrenchLogic;
-import Logic.FrenchToEnglishLogic;
 
 import javax.swing.*;
 import java.awt.*;
