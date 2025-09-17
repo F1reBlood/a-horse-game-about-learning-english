@@ -1,5 +1,7 @@
 package GUI;
 
+import Controller.StyleController;
+
 import javax.swing.*;
 import java.awt.*;
 

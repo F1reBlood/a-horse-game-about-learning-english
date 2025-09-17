@@ -1,6 +1,7 @@
 package GUI;
 
 import Controller.MemoController;
+import Controller.StyleController;
 import Logic.MemoLogic;
 import Logic.Pair;
 
