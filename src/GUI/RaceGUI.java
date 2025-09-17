@@ -13,7 +13,7 @@ public class RaceGUI {
     private JTextField userInput;
 
     public RaceGUI(){
-        frame = new JFrame("English to French");
+        frame = new JFrame("Race");
         panel = new JPanel();
 
         frame.add(panel);
@@ -42,8 +42,17 @@ public class RaceGUI {
         panel.add(userInput);
     }
 
-    public void setTextToLabel(JLabel label, String text) {
-        label.setText(text);
+    public void setTextToCopy(String text){
+        textToCopy.setText(text);
+    }
+    public String getTextToCopy(){
+        return textToCopy.getText();
+    }
+    public void setEnemyText(String text){
+        enemyText.setText(text);
+    }
+    public String getEnemyText(String text){
+        return enemyText.getText();
     }
 
     public String getUserInput() {
