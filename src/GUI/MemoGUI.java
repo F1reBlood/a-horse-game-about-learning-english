@@ -21,9 +21,8 @@ public class MemoGUI {
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         frame.add(panel);
         StyleController.centerApplication(frame);
-
-        frame.setMinimumSize(new Dimension(1280,720));
-        frame.setMaximumSize(new Dimension(1280,720));
+        frame.setSize(1280, 720);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 

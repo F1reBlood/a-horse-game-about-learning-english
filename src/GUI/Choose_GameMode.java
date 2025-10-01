@@ -19,6 +19,7 @@ public class Choose_GameMode {
         backgroundLabel.setLayout(new GridBagLayout());
         backgroundLabel.setSize(1280, 720);
         frame.setContentPane(backgroundLabel);
+        frame.setResizable(false);
 
         backgroundLabel.add(panel);
 

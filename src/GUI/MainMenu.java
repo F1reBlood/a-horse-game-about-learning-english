@@ -43,8 +43,8 @@ public class MainMenu {
 
         StyleController.centerApplication(frame);
 
-        frame.setMinimumSize(new Dimension(1280,720));
-        frame.setMaximumSize(new Dimension(1280,720));
+        frame.setSize(1280, 720);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.setTitle("A horse game about learning english");
         frame.pack();

@@ -21,9 +21,8 @@ public class FrenchToEnglishGUI {
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         StyleController.centerApplication(frame);
-
-        frame.setMinimumSize(new Dimension(1280,720));
-        frame.setMaximumSize(new Dimension(1280,720));
+        frame.setSize(1280, 720);
+        frame.setResizable(false);
         frame.setVisible(true);
 
         panel.setLayout(new GridLayout(3, 1, 10, 10));
