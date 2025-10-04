@@ -1,4 +1,4 @@
-package GUI;
+package Logic;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

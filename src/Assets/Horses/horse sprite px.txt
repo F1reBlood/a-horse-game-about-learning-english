@@ -1,2 +1,4 @@
 48 pixels = hauteur d'une image
 64 pixels = largeur d'une image
+
+Fin de la course : 1100px

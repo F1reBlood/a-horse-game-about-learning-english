@@ -1,8 +1,10 @@
 package Controller;
 
 import GUI.RaceGUI;
+import Logic.Player;
 import Logic.RaceLogic;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +13,7 @@ public class RaceController {
     private RaceGUI view;
     private RaceLogic model;
 
-    public RaceController(RaceGUI view, RaceLogic model) {
+    public RaceController(RaceGUI view, RaceLogic model) throws IOException {
         this.view = view;
         this.model = model;
 
@@ -27,5 +29,6 @@ public class RaceController {
             "The sun is yellow in the morning.",
             "The moon is round in the sky."
         );
+
     }
 }

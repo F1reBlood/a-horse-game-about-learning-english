@@ -8,6 +8,7 @@ import Logic.RaceLogic;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Choose_GameMode {
     public Choose_GameMode() {
@@ -69,7 +70,11 @@ public class Choose_GameMode {
             frame.dispose();
         });
         race.addActionListener(e -> {
-            new RaceController(new RaceGUI(), new RaceLogic());
+            try {
+                new RaceController(new RaceGUI(), new RaceLogic());
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             frame.dispose();
         });
 
