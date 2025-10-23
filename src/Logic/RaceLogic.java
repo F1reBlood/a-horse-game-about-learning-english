@@ -47,7 +47,7 @@ public class RaceLogic {
         ((TrackPanel) panel).setFrame(player.getPosX(), player.getPosY(), frame1);
 
         // Chaque 200 ms, on change la frame pour la suivante afin de faire l'animation. La variable "reverse" sert à savoir quel frame afficher lorsque l'animation se joue à l'envers (retour de la queue).
-        idleTimer = new Timer(200, e -> {
+        idleTimer = new Timer(400, e -> {
             ((TrackPanel) panel).setFrame(player.getPosX(), player.getPosY(), frames.get(cpt));
             if (cpt < 2 && reverse == false){
                 cpt += 1;
@@ -65,9 +65,8 @@ public class RaceLogic {
         idleTimer.start();
     }
 
-    // Fais avancer le cheval d'une "case" après avoir écrit un mot correctement
+    // Fais avancer le cheval d'une "case" après avoir écrit un mot correctement + compte automatiquement le nombre de case à avancer en fonction du nombre de mots total
     public void animateFrame(JPanel panel, Player player, int nbOfWords) throws IOException {
-        // i = nombre de frames parcourues
         BufferedImage frame1, frame2, frame3, frame4, frame5;
         int pxToAdvance = endRacePx /  nbOfWords;
         int pxToAdvancePerFrame = pxToAdvance / 5;
