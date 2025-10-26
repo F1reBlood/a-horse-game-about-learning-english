@@ -1,10 +1,7 @@
 package GUI;
 
 import Controller.*;
-import Logic.EnglishToFrenchLogic;
-import Logic.FrenchToEnglishLogic;
-import Logic.MemoLogic;
-import Logic.RaceLogic;
+import Logic.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,11 +30,11 @@ public class Choose_GameMode {
         JButton race = new JButton("Race");
         JButton back = new JButton("Back");
 
-        StyleController.addStyleToButton(memo);
-        StyleController.addStyleToButton(frenchToEnglish);
-        StyleController.addStyleToButton(englishToFrench);
-        StyleController.addStyleToButton(race);
-        StyleController.addStyleToButton(back);
+        StyleManager.addStyleToButton(memo);
+        StyleManager.addStyleToButton(frenchToEnglish);
+        StyleManager.addStyleToButton(englishToFrench);
+        StyleManager.addStyleToButton(race);
+        StyleManager.addStyleToButton(back);
 
         JPanel buttonsPanel = new JPanel(new GridLayout(2,2, 30, 30));
         buttonsPanel.setOpaque(false);
@@ -78,7 +75,7 @@ public class Choose_GameMode {
             frame.dispose();
         });
 
-        StyleController.centerApplication(frame);
+        StyleManager.centerApplication(frame);
 
         frame.setMinimumSize(new Dimension(1280,720));
         frame.setMaximumSize(new Dimension(1280,720));

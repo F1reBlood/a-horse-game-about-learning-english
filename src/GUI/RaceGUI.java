@@ -1,6 +1,6 @@
 package GUI;
 
-import Controller.StyleController;
+import Logic.StyleManager;
 import Logic.TrackPanel;
 
 import javax.swing.*;
@@ -10,7 +10,7 @@ public class RaceGUI {
     private JFrame frame;
     private JPanel mainPanel;
     private JLabel textToCopy;
-    private JTextField userInput;
+    private JTextPane userInput;
     private JPanel userTrackPanel;
     private JPanel enemyTrackPanel;
 
@@ -26,7 +26,7 @@ public class RaceGUI {
 
         frame.add(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        StyleController.centerApplication(frame);
+        StyleManager.centerApplication(frame);
         frame.setSize(1280, 720);
         frame.setResizable(false);
         frame.setVisible(true);
@@ -37,16 +37,15 @@ public class RaceGUI {
         userTrackPanel = new TrackPanel();
         mainPanel.add(userTrackPanel);
 
-
         enemyTrackPanel = new TrackPanel();
         mainPanel.add(enemyTrackPanel);
 
         textToCopy = new JLabel();
         textToCopy.setHorizontalAlignment(JLabel.CENTER);
-        StyleController.addStyleToLabel(textToCopy, 34);
+        StyleManager.addStyleToLabel(textToCopy, 34);
 
-        userInput = new JTextField();
-        StyleController.addStyleToTextField(userInput, 24);
+        userInput = new JTextPane();
+        StyleManager.addStyleToTextPane(userInput, 24);
 
         mainPanel.add(textToCopy);
         mainPanel.add(userInput);
@@ -57,11 +56,14 @@ public class RaceGUI {
     public void setTextToCopy(String text){
         textToCopy.setText(text);
     }
-    public String getTextToCopy(){
-        return textToCopy.getText();
+    public JLabel getTextToCopy(){
+        return textToCopy;
     }
     public String getUserInput() {
         return userInput.getText();
+    }
+    public JTextPane getUserTextPane() {
+        return userInput;
     }
     public JPanel getUserTrackPanel() {
         return userTrackPanel;

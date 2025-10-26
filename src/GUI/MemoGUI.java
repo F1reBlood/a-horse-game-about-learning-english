@@ -1,7 +1,7 @@
 package GUI;
 
 import Controller.MemoController;
-import Controller.StyleController;
+import Logic.StyleManager;
 import Logic.MemoLogic;
 import Logic.Pair;
 
@@ -20,7 +20,7 @@ public class MemoGUI {
         panel.setLayout(new GridLayout(4, 5, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         frame.add(panel);
-        StyleController.centerApplication(frame);
+        StyleManager.centerApplication(frame);
         frame.setSize(1280, 720);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
@@ -40,10 +40,10 @@ public class MemoGUI {
         }
         label.setLayout(new GridLayout(3, 1, 50, 50));
         panel.add(label);
-        StyleController.addStyleToLabel(label, 34);
+        StyleManager.addStyleToLabel(label, 34);
 
         JButton replay = new JButton("Replay");
-        StyleController.addStyleToButton(replay);
+        StyleManager.addStyleToButton(replay);
         panel.add(replay);
         replay.addActionListener(e -> {
            new MemoController(new MemoGUI(), new MemoLogic());
@@ -51,7 +51,7 @@ public class MemoGUI {
         });
 
         JButton back = new JButton("Back");
-        StyleController.addStyleToButton(back);
+        StyleManager.addStyleToButton(back);
         back.addActionListener(e -> {
             new Choose_GameMode();
             frame.dispose();

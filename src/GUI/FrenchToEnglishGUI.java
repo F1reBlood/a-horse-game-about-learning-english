@@ -1,7 +1,7 @@
 package GUI;
 
 import Controller.FrenchToEnglishController;
-import Controller.StyleController;
+import Logic.StyleManager;
 import Logic.FrenchToEnglishLogic;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public class FrenchToEnglishGUI {
 
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        StyleController.centerApplication(frame);
+        StyleManager.centerApplication(frame);
         frame.setSize(1280, 720);
         frame.setResizable(false);
         frame.setVisible(true);
@@ -30,13 +30,13 @@ public class FrenchToEnglishGUI {
 
         textToTranslate = new JLabel("This is a test sentence, and it's cool !");
         textToTranslate.setHorizontalAlignment(JLabel.CENTER);
-        StyleController.addStyleToLabel(textToTranslate, 34);
+        StyleManager.addStyleToLabel(textToTranslate, 34);
 
         userText = new JTextField();
-        StyleController.addStyleToTextField(userText, 24);
+        StyleManager.addStyleToTextField(userText, 24);
 
         submit = new JButton("Submit");
-        StyleController.addStyleToButton(submit);
+        StyleManager.addStyleToButton(submit);
 
         panel.add(textToTranslate);
         panel.add(userText);
@@ -65,10 +65,10 @@ public class FrenchToEnglishGUI {
         }
         label.setLayout(new GridLayout(3, 1, 50, 50));
         panel.add(label);
-        StyleController.addStyleToLabel(label, 34);
+        StyleManager.addStyleToLabel(label, 34);
 
         JButton replay = new JButton("Replay");
-        StyleController.addStyleToButton(replay);
+        StyleManager.addStyleToButton(replay);
         panel.add(replay);
         replay.addActionListener(e -> {
             new FrenchToEnglishController(new FrenchToEnglishGUI(), new FrenchToEnglishLogic());
@@ -76,7 +76,7 @@ public class FrenchToEnglishGUI {
         });
 
         JButton back = new JButton("Back");
-        StyleController.addStyleToButton(back);
+        StyleManager.addStyleToButton(back);
         back.addActionListener(e -> {
             new Choose_GameMode();
             frame.dispose();

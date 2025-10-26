@@ -1,10 +1,7 @@
 package Controller;
 
 import GUI.MemoGUI;
-import Logic.CoreLogic;
-import Logic.MemoLogic;
-import Logic.ScoreManager;
-import Logic.Pair;
+import Logic.*;
 
 import javax.swing.*;
 import java.util.Arrays;
@@ -46,7 +43,7 @@ public class MemoController {
         // Crée les boutons et les associe chacun à un mot différent, leur ajoute un style, les ajoute au dictionnaire et les affiche
         for (int i = 0; i < mots.size(); i++) {
             JButton button = new JButton(mots.get(i));
-            StyleController.addStyleToButton(button);
+            StyleManager.addStyleToButton(button);
             buttons.put(mots.get(i), button);
             button.addActionListener(e -> {
                 showOneButton(buttons, button);

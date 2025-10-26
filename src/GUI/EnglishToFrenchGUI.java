@@ -1,7 +1,7 @@
 package GUI;
 
 import Controller.EnglishToFrenchController;
-import Controller.StyleController;
+import Logic.StyleManager;
 import Logic.EnglishToFrenchLogic;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public class EnglishToFrenchGUI {
 
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        StyleController.centerApplication(frame);
+        StyleManager.centerApplication(frame);
         frame.setSize(1280, 720);
         frame.setResizable(false);
 
@@ -31,13 +31,13 @@ public class EnglishToFrenchGUI {
 
         textToTranslate = new JLabel("C'est une phrase de test, et c'est cool !");
         textToTranslate.setHorizontalAlignment(JLabel.CENTER);
-        StyleController.addStyleToLabel(textToTranslate, 34);
+        StyleManager.addStyleToLabel(textToTranslate, 34);
 
         userText = new JTextField();
-        StyleController.addStyleToTextField(userText, 24);
+        StyleManager.addStyleToTextField(userText, 24);
 
         submit = new JButton("Submit");
-        StyleController.addStyleToButton(submit);
+        StyleManager.addStyleToButton(submit);
 
         panel.add(textToTranslate);
         panel.add(userText);
@@ -66,10 +66,10 @@ public class EnglishToFrenchGUI {
         }
         label.setLayout(new GridLayout(3, 1, 50, 50));
         panel.add(label);
-        StyleController.addStyleToLabel(label, 34);
+        StyleManager.addStyleToLabel(label, 34);
 
         JButton replay = new JButton("Replay");
-        StyleController.addStyleToButton(replay);
+        StyleManager.addStyleToButton(replay);
         panel.add(replay);
         replay.addActionListener(e -> {
             new EnglishToFrenchController(new EnglishToFrenchGUI(), new EnglishToFrenchLogic());
@@ -77,7 +77,7 @@ public class EnglishToFrenchGUI {
         });
 
         JButton back = new JButton("Back");
-        StyleController.addStyleToButton(back);
+        StyleManager.addStyleToButton(back);
         back.addActionListener(e -> {
             new Choose_GameMode();
             frame.dispose();

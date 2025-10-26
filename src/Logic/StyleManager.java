@@ -1,11 +1,11 @@
-package Controller;
+package Logic;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class StyleController {
+public class StyleManager {
     public static void addStyleToButton(JButton button){
         button.setBackground(new Color(70,130,180));
         button.setForeground(Color.white);
@@ -48,5 +48,12 @@ public class StyleController {
 
         // Définir l'emplacement de la fenêtre
         frame.setLocation(x, y);
+    }
+
+    public static void addStyleToTextPane(JTextPane textPane, int size) {
+        textPane.setBackground(new Color(70,130,180));
+        textPane.setForeground(Color.white);
+        textPane.setFont(new Font("Serif", Font.BOLD, size));
+        textPane.setEditable(true);
     }
 }

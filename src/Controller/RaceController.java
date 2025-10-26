@@ -5,22 +5,32 @@ import Logic.Player;
 import Logic.RaceLogic;
 import Logic.TrackPanel;
 
+import javax.swing.*;
+import javax.swing.text.StyledDocument;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class RaceController {
     private RaceGUI view;
-    private RaceLogic model;
+    private RaceLogic playerModel;
+    private RaceLogic enemyModel;
     private Player player;
     private Player enemy;
     private TrackPanel playerPanel;
     private TrackPanel enemyPanel;
+    private JTextPane userTextPane;
+    private String userInput;
+    private String currentPhrase;
 
     public RaceController(RaceGUI view, RaceLogic model) throws IOException {
         this.view = view;
-        this.model = model;
+        playerModel = model;
+        enemyModel = new RaceLogic();
 
         playerPanel = (TrackPanel) view.getUserTrackPanel();
         enemyPanel = (TrackPanel) view.getEnemyTrackPanel();
@@ -41,13 +51,37 @@ public class RaceController {
             "The sun is yellow in the morning.",
             "The moon is round in the sky."
         );
+        Collections.shuffle(listPhrases);
+
+        currentPhrase = listPhrases.get(0);
+        view.getTextToCopy().setText(currentPhrase);
 
         // Joueur : idleHorse au start; vérification à chaque espace, quand le mot est bon : animateFrame; sinon : la lettre qui n'est pas bonne on la met en rouge
         // Enemy : on met un timer (plus ou moins long en fonction de la difficulté) et à chaque tour de timer, il y a une chance (fixe ou qui bouge en fonction du nombre de mot du joueur jsp) que le bot avance
 
-        // à debug, quand il y a les 2 animations en même temps, la frame du milieu ne se joue pas, et l'animation du 2e Player se joue une seule fois
-        model.idleHorse(playerPanel, player);
-        //model.idleHorse(enemyPanel, enemy);
+        playerModel.idleHorse(playerPanel, player);
+        enemyModel.idleHorse(enemyPanel, enemy);
 
+        StyledDocument doc = userTextPane.getStyledDocument();
+
+        // à chaque fois que le joueur appuie sur espace, on récupère son input
+        view.getUserTextPane().addKeyListener(new KeyAdapter() {
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    userInput = view.getUserInput();
+
+                    // Itère sur chaque charcatère de ce que le joueur écrit
+                    for (int i=0; i<userInput.length(); i++){
+                        char c = userInput.charAt(i);
+                        char c2 = currentPhrase.charAt(i);
+
+                        if (c != c2){
+                            // On affiche la lettre en rouge
+
+                        }
+                    }
+                }
+            }
+        });
     }
 }

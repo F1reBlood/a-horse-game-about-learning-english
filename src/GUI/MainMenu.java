@@ -1,6 +1,6 @@
 package GUI;
 
-import Controller.StyleController;
+import Logic.StyleManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,10 +26,10 @@ public class MainMenu {
         JButton settings = new JButton("Settings");
         JButton exit = new JButton("Exit");
 
-        StyleController.addStyleToButton(play);
-        StyleController.addStyleToButton(character);
-        StyleController.addStyleToButton(settings);
-        StyleController.addStyleToButton(exit);
+        StyleManager.addStyleToButton(play);
+        StyleManager.addStyleToButton(character);
+        StyleManager.addStyleToButton(settings);
+        StyleManager.addStyleToButton(exit);
 
         panel.add(play);
         panel.add(character);
@@ -41,7 +41,7 @@ public class MainMenu {
         });
         exit.addActionListener(e -> System.exit(0));
 
-        StyleController.centerApplication(frame);
+        StyleManager.centerApplication(frame);
 
         frame.setSize(1280, 720);
         frame.setResizable(false);

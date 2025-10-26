@@ -25,7 +25,7 @@ public class RaceLogic {
     }
 
     // Joue l'animation du cheval qui reste sur place
-    public void idleHorse(JPanel panel, Player player) throws IOException {
+    public void idleHorse(TrackPanel panel, Player player) throws IOException {
         BufferedImage frame1, frame2, frame3;
         reverse = false;
         if (animateTimer != null) {
@@ -44,10 +44,10 @@ public class RaceLogic {
         frames.add(frame2);
         frames.add(frame3);
 
-        ((TrackPanel) panel).setFrame(player.getPosX(), player.getPosY(), frame1);
+        panel.setFrame(player.getPosX(), player.getPosY(), frame1);
 
         // Chaque 200 ms, on change la frame pour la suivante afin de faire l'animation. La variable "reverse" sert à savoir quel frame afficher lorsque l'animation se joue à l'envers (retour de la queue).
-        idleTimer = new Timer(400, e -> {
+        idleTimer = new Timer(350, e -> {
             ((TrackPanel) panel).setFrame(player.getPosX(), player.getPosY(), frames.get(cpt));
             if (cpt < 2 && reverse == false){
                 cpt += 1;
@@ -66,7 +66,7 @@ public class RaceLogic {
     }
 
     // Fais avancer le cheval d'une "case" après avoir écrit un mot correctement + compte automatiquement le nombre de case à avancer en fonction du nombre de mots total
-    public void animateFrame(JPanel panel, Player player, int nbOfWords) throws IOException {
+    public void animateFrame(TrackPanel panel, Player player, int nbOfWords) throws IOException {
         BufferedImage frame1, frame2, frame3, frame4, frame5;
         int pxToAdvance = endRacePx /  nbOfWords;
         int pxToAdvancePerFrame = pxToAdvance / 5;
@@ -92,7 +92,7 @@ public class RaceLogic {
         animateTimer = new Timer(150, e -> {
             newPos = player.getPosX() + pxToAdvancePerFrame;
             player.setPosX(newPos);
-            ((TrackPanel) panel).setFrame(player.getPosX(), player.getPosY(), frames.get(cpt));
+            panel.setFrame(player.getPosX(), player.getPosY(), frames.get(cpt));
             cpt += 1;
             if (cpt == 5){
                 animateTimer.stop();
